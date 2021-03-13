@@ -68,7 +68,7 @@
             alert("Vous devez rentrer un nombre supérieur ou égal à 2 !");
             return;
         }
-        var rn = parseInt(Math.sqrt(n));
+        var rn = Math.sqrt(n);
         var prems = liste_premiers(rn);
         var p1 = document.createElement("p");
         p1.innerHTML = "On récupère la liste des nombres premiers inférieurs à la racine carrée de " + n + " soit " + rn;
