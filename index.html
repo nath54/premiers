@@ -20,9 +20,7 @@
         <h1>Lister tous les nombres premiers en dessous d'un certain nombre</h1>
         <input type="number" id="in2" />
         <button onclick="calcul_premiers();">Lister</button>
-        <div id="result2">
-
-        </div>
+        <p id="result2"></p>
     </div>
 </body>
 
@@ -58,9 +56,15 @@
     }
 
     function calcul_premiers() {
-        var n = parseInt(document.getElementById("inp2"));
+        var n = parseInt(document.getElementById("inp2").value);
         var prems = liste_premiers(n);
         document.getElementById("result").innerHTML = "Les nombres premiers inférieurs à " + n + " sont : " + prems.join(", ");
+    }
+
+    function est_premier() {
+        var n = parseInt(document.getElementById("inp1").value);
+        var prems = liste_premiers(math.sqrt(n));
+
     }
 </script>
 
