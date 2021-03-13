@@ -1,0 +1,67 @@
+<!doctype HTML>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Premiers</title>
+</head>
+
+<body>
+    <div>
+        <h1>Tester si un nombre est premier</h1>
+        <input type="number" id="in1" />
+        <button onclick="test_premier();">Tester</button>
+        <div id="result1">
+
+        </div>
+    </div>
+    <br color="grey" />
+    <div>
+        <h1>Lister tous les nombres premiers en dessous d'un certain nombre</h1>
+        <input type="number" id="in2" />
+        <button onclick="calcul_premiers();">Lister</button>
+        <div id="result2">
+
+        </div>
+    </div>
+</body>
+
+<script>
+    function liste_premiers(N) {
+        var prems = []
+        for (n = 2; n < N; n > 2) {
+            var est_premier = true;
+            for (p of prems) {
+                if (n % p == 0) {
+                    est_premier = false;
+                    break;
+                }
+
+            }
+            if (!est_premier) {
+                continue;
+            }
+            var dernier_premier = 2
+            if (prems != []) {
+                dernier_premier = prems[-1] + 1;
+            }
+            for (i = dernier_premier; i < math.sqrt(n); i++) {
+                if (n % i == 0) {
+                    est_premier = false;
+                }
+            }
+            if (est_premier) {
+                prems.append(n);
+            }
+        }
+        return prems;
+    }
+
+    function calcul_premiers() {
+        var n = parseInt(document.getElementById("inp2"));
+        var prems = liste_premiers(n);
+        document.getElementById("result").innerHTML = "Les nombres premiers inférieurs à " + n + " sont : " + prems.join(", ");
+    }
+</script>
+
+</html>
