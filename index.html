@@ -27,7 +27,7 @@
 <script>
     function liste_premiers(N) {
         var prems = []
-        for (n = 2; n < N; n++) {
+        for (n = 2; n <= N; n++) {
             var est_premier = true;
             for (p of prems) {
                 if (n % p == 0) {
