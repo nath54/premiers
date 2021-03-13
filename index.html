@@ -58,13 +58,47 @@
     function calcul_premiers() {
         var n = parseInt(document.getElementById("inp2").value);
         var prems = liste_premiers(n);
-        document.getElementById("result").innerHTML = "Les nombres premiers inférieurs à " + n + " sont : " + prems.join(", ");
+        document.getElementById("result2").innerHTML = "Les nombres premiers inférieurs à " + n + " sont : " + prems.join(", ");
     }
 
     function est_premier() {
+        document.getElementById("result1").innerHTML = "";
         var n = parseInt(document.getElementById("inp1").value);
-        var prems = liste_premiers(math.sqrt(n));
-
+        if (n < 2) {
+            alert("Vous devez rentrer un nombre supérieur ou égal à 2 !");
+            return;
+        }
+        var rn = math.sqrt(n);
+        var prems = liste_premiers(rn);
+        var p1 = document.createElement("p");
+        p1.innerHTML = "On récupère la liste des nombres premiers inférieurs à la racine carrée de " + n + " soit " + rn;
+        var p2 = document.createElement("p");
+        p2.innerHTML = "Cette liste est : " + prems.join(", ");
+        var p3 = document.createElement("p");
+        p3.innerHTML = "On teste pour chacuns d'entre eux si " + n + " est divisible avec";
+        var diviseur = null;
+        for (p of prems) {
+            if (n % p == 0) {
+                diviseur = n;
+                break;
+            }
+        }
+        var p4 = document.createElement("p");
+        var p5 = document.createElement("p");
+        if (diviseur == null) {
+            p4.innerHTML = "Aucun d'entre eux n'est un diviseur de " + n;
+            p5.innerHTML = "Donc " + n + " est un nombre premier !";
+            p5.style.color = "green";
+        } else {
+            p4.innerHTML = "" + diviseur + " est le plus petit diviseur premier de " + n;
+            p5.innerHTML = "Donc " + n + " n'est pas un nombre premier !";
+            p5.style.color = "red";
+        }
+        document.getElementById("result1").appendChild(p1);
+        document.getElementById("result1").appendChild(p2);
+        document.getElementById("result1").appendChild(p3);
+        document.getElementById("result1").appendChild(p4);
+        document.getElementById("result1").appendChild(p5);
     }
 </script>
 
