@@ -9,7 +9,7 @@
 <body>
     <div>
         <h1>Tester si un nombre est premier</h1>
-        <input type="number" id="in1" />
+        <input type="number" id="inp1" />
         <button onclick="test_premier();">Tester</button>
         <div id="result1">
 
@@ -18,7 +18,7 @@
     <br color="grey" />
     <div>
         <h1>Lister tous les nombres premiers en dessous d'un certain nombre</h1>
-        <input type="number" id="in2" />
+        <input type="number" id="inp2" />
         <button onclick="calcul_premiers();">Lister</button>
         <p id="result2"></p>
     </div>
@@ -27,7 +27,7 @@
 <script>
     function liste_premiers(N) {
         var prems = []
-        for (n = 2; n < N; n > 2) {
+        for (n = 2; n < N; n++) {
             var est_premier = true;
             for (p of prems) {
                 if (n % p == 0) {
@@ -43,13 +43,13 @@
             if (prems != []) {
                 dernier_premier = prems[-1] + 1;
             }
-            for (i = dernier_premier; i < math.sqrt(n); i++) {
+            for (i = dernier_premier; i < Math.sqrt(n); i++) {
                 if (n % i == 0) {
                     est_premier = false;
                 }
             }
             if (est_premier) {
-                prems.append(n);
+                prems.push(n);
             }
         }
         return prems;
@@ -61,14 +61,14 @@
         document.getElementById("result2").innerHTML = "Les nombres premiers inférieurs à " + n + " sont : " + prems.join(", ");
     }
 
-    function est_premier() {
+    function test_premier() {
         document.getElementById("result1").innerHTML = "";
         var n = parseInt(document.getElementById("inp1").value);
         if (n < 2) {
             alert("Vous devez rentrer un nombre supérieur ou égal à 2 !");
             return;
         }
-        var rn = math.sqrt(n);
+        var rn = parseInt(Math.sqrt(n));
         var prems = liste_premiers(rn);
         var p1 = document.createElement("p");
         p1.innerHTML = "On récupère la liste des nombres premiers inférieurs à la racine carrée de " + n + " soit " + rn;
@@ -79,7 +79,7 @@
         var diviseur = null;
         for (p of prems) {
             if (n % p == 0) {
-                diviseur = n;
+                diviseur = p;
                 break;
             }
         }
